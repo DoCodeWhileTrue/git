@@ -34,7 +34,7 @@ test_rebase() {
 		git reset --hard E &&
 		git checkout side &&
 		git reset --hard G &&
-		git rebase $@ &&
+		eval git rebase \"$@\" &&
 		test_write_lines $expected >expect &&
 		git log --pretty=%s >actual &&
 		test_cmp expect actual
